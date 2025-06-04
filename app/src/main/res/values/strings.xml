@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MVP NFC Host</string>
+    <string name="servicedesc">MVP URL Emulation Service</string>
+    <string name="aiddescription">MVP AID for URL Sharing</string>
+
+    <string name="url_hint">e.g., https://example.com</string>
+    <string name="url_label">Enter URL to share</string>
+    <string name="share_button">Share URL via NFC</string>
+    <string name="empty_url_error">Please enter a valid URL</string>
+    <string name="ready_to_share">Ready to share! Hold your phone near an NFC reader</string>
+    <string name="nfc_not_available">NFC is not available on this device</string>
+    <string name="nfc_instructions">Enter a URL and tap \'Share\' to begin NFC sharing</string>
+    <string name="nfc_active">NFC Sharing Active</string>
+    <string name="nfc_hold_instruction">Hold your phone near an NFC reader device</string>
+    <string name="how_it_works">How it works</string>
+    <string name="step1">1. Enter a valid URL in the text field above</string>
+    <string name="step2">2. Tap the Share button to activate NFC sharing</string>
+    <string name="step3">3. Hold your device near an NFC reader</string>
+    <string name="step4">4. The reader will receive your URL and can open it</string>
+    <string name="url_validation_error">Please enter a valid URL</string>
+    <string name="clear_button">Clear</string>
+
+    <!-- HCE service strings -->
+    <string name="hce_service_description">NFC URL Sharing Service</string>
+    <string name="aid_description">URL Sharing Application</string>
+    <string name="hce_activated">Card emulation active</string>
+    <string name="hce_error">Error activating card emulation</string>
+</resources>
