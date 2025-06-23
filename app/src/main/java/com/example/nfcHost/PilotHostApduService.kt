@@ -39,21 +39,26 @@ class PilotHostApduService : HostApduService() {
         // APDU command parsing (simplified for demo)
         return when {
             isSelectAid(apdu) -> {
+                Log.d("Mane", "Received APDU - isSelectAid : ${apdu.toHex()}")
                 currentFile = 0
                 success()
             }
 
             isSelectFile(apdu, CC_FILE_ID) -> {
+                Log.d("Mane", "Received APDU - isSelectFile : CC_FILE_ID ${apdu.toHex()}")
                 currentFile = 1
                 fci()
             }
 
             isSelectFile(apdu, NDEF_FILE_ID) -> {
+                Log.d("Mane", "Received APDU - isSelectFile : NDEF_FILE_ID ${apdu.toHex()}")
+
                 currentFile = 2
                 fci()
             }
 
             isReadBinary(apdu) -> {
+                Log.d("Mane", "Received APDU - isReadBinary : ${apdu.toHex()}")
                 val offset = ((apdu[2].toInt() and 0xFF) shl 8) or (apdu[3].toInt() and 0xFF)
                 val le =
                     if (apdu.size > 4) if (apdu[4] == 0.toByte()) 256 else apdu[4].toInt() and 0xFF else 256
@@ -68,7 +73,9 @@ class PilotHostApduService : HostApduService() {
         }
     }
 
-    override fun onDeactivated(reason: Int) {}
+    override fun onDeactivated(reason: Int) {
+        Log.d("Mane", "onDeactivated : reason ${reason}")
+    }
 
     private fun isSelectAid(apdu: ByteArray): Boolean {
         return apdu.size >= 12 && apdu[1] == 0xA4.toByte() && apdu[2] == 0x04.toByte()
@@ -88,7 +95,7 @@ class PilotHostApduService : HostApduService() {
     }
 
     private fun fci(): ByteArray {
-        return byteArrayOf(0x62.toByte(), 0x00, 0x90.toByte(), 0x00)
+        return byteArrayOf(0x90.toByte(), 0x00)
     }
 
     private fun concat(a: ByteArray, b: ByteArray): ByteArray {
